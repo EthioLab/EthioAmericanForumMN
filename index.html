@@ -104,8 +104,8 @@
                 lastName: document.getElementById('lastName').value,
                 phoneNumber: document.getElementById('phoneNumber').value
             };
-
-            fetch('https://script.google.com/macros/s/AKfycbxkLA1q5e3SVN15XXi5G45IjO3kpRkVr2shsf0L_CyRT-9wyv33NMARUVCGveo1vZll/exec', {
+    
+            fetch('https://script.google.com/macros/s/AKfycbzV2L06ff9sxKett-j8d5yTU-vkqONKdv-AueyC0QTXPQKOkj_oaXp4gdsz145SH6m5/exec', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -114,14 +114,19 @@
             })
             .then(response => response.json())
             .then(data => {
-                alert('Form submitted successfully!');
-                document.getElementById('contactForm').reset();
+                if (data.status === 'success') {
+                    alert('Form submitted successfully!');
+                    document.getElementById('contactForm').reset();
+                } else {
+                    alert('Error: ' + data.message);
+                }
             })
             .catch(error => {
                 console.error('Error:', error);
-                alert('There was an error submitting the form. Please try again later.');
+                alert('There was an error submitting the form: ' + error.message);
             });
         }
     </script>
+
 </body>
 </html>
