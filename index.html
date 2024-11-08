@@ -98,35 +98,30 @@
         </form>
     </div>
     <script>
-    function submitForm() {
-        const formData = {
-            firstName: document.getElementById('firstName').value,
-            lastName: document.getElementById('lastName').value,
-            phoneNumber: document.getElementById('phoneNumber').value
-        };
+        function submitForm() {
+            const formData = {
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                phoneNumber: document.getElementById('phoneNumber').value
+            };
 
-        fetch('https://script.google.com/macros/library/d/1Dqlu52STQLNW6deSe4BgdyoFAGrvltIvcpSk_fvH1KhQwSL2zKLUaIk_/6', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(formData)
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.status === 'success') {
+            fetch('https://script.google.com/macros/s/AKfycbxkLA1q5e3SVN15XXi5G45IjO3kpRkVr2shsf0L_CyRT-9wyv33NMARUVCGveo1vZll/exec', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
                 alert('Form submitted successfully!');
                 document.getElementById('contactForm').reset();
-            } else {
-                alert('Error: ' + data.message);
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('There was an error submitting the form. Please try again later.');
-        });
-    }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('There was an error submitting the form. Please try again later.');
+            });
+        }
     </script>
 </body>
 </html>
-
