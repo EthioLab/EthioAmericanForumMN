@@ -104,13 +104,15 @@
                 lastName: document.getElementById('lastName').value,
                 phoneNumber: document.getElementById('phoneNumber').value
             };
-    
+        
+            console.log('Form Data:', formData);  // Log the data to the console
+        
             fetch('https://script.google.com/macros/s/AKfycbzFnMapDuyok_dNJtQUf-0XY_ESXgV_E-hcitBfUKmPT2XIwX0hwarVfChr0F4c6Co0/exec', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(formData)
+                body: JSON.stringify(formData)  // Ensure the data is properly stringified
             })
             .then(response => response.json())
             .then(data => {
