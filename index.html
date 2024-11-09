@@ -98,36 +98,36 @@
         </form>
     </div>
     <script>
-        function submitForm() {
-            const formData = {
-                firstName: document.getElementById('firstName').value,
-                lastName: document.getElementById('lastName').value,
-                phoneNumber: document.getElementById('phoneNumber').value
-            };
-        
-            console.log('Form Data:', formData);  // Log the data to the console
-        
-            fetch('https://script.google.com/macros/s/AKfycbzry82B1PhnTPyr3f5OiNzGUHRk7dJ-lhEeE-VdJMpZ5meKtEqoC1ifjo0KsJKFR_R2/exec', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formData)  // Ensure the data is properly stringified
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.status === 'success') {
-                    alert('Form submitted successfully!');
-                    document.getElementById('contactForm').reset();
-                } else {
-                    alert('Error: ' + data.message);
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('There was an error submitting the form: ' + error.message);
-            });
-        }
+    function submitForm() {
+        const formData = {
+            firstName: document.getElementById('firstName').value,
+            lastName: document.getElementById('lastName').value,
+            phoneNumber: document.getElementById('phoneNumber').value
+        };
+    
+        console.log('Form Data:', formData);  // Log the data to the console
+    
+        fetch('https://script.google.com/macros/s/AKfycbzry82B1PhnTPyr3f5OiNzGUHRk7dJ-lhEeE-VdJMpZ5meKtEqoC1ifjo0KsJKFR_R2/exec', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)  // Ensure the data is properly stringified
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                alert('Form submitted successfully!');
+                document.getElementById('contactForm').reset();
+            } else {
+                alert('Error: ' + data.message);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('There was an error submitting the form: ' + error.message);
+        });
+    }
     </script>
 </body>
 </html>
